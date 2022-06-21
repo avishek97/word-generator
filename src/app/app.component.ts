@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import arrays from '../utils/words'
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'word-generator';
+
+  words = '';
+  limits = 10;
+
+  handleSliderChange(newLimit:Event){
+    let htmlElement = newLimit.target as HTMLInputElement;
+    this.limits=parseInt(htmlElement.value);
+  }
+
+  generate(){
+    this.words=arrays.slice(0,this.limits).join(" ")
+  }
+
 }
